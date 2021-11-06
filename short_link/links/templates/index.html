@@ -1,0 +1,27 @@
+<DOCTYPE HTML>
+	{% load static %}
+	<html>
+	<head>
+		<link rel = "stylesheet" href = "{% static 'styles.css' %}"/ >
+		<title>Services of short Links </title>
+	</head>
+		<body>
+	<div class='main'>
+		<form method="POST" action="">
+			<div class='adress'>
+			<h1 align=center> Исходный адрес:  </h1>
+			</div>
+			{{form}}	
+			<input type="Submit" value="Submit" id="submit"> 
+		</form>
+		<div id="output">	
+			{% if key and link %}
+<h3> Ваша сокращенная ссылка: <a href={{ link }}> http://localhost:8000/{{ key }}</a></h3>
+			{% elif link %}
+<h3> Допускаются следующие схемы: http, https, ftp</h3>
+			{% endif %}
+		</div>
+		
+</div>
+		</body>
+	</html>
