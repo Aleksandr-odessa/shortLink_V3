@@ -1,27 +1,42 @@
-<DOCTYPE HTML>
-	{% load static %}
-	<html>
-	<head>
-		<link rel = "stylesheet" href = "{% static 'styles.css' %}"/ >
-		<title>Services of short Links </title>
-	</head>
-		<body>
-	<div class='main'>
-		<form method="POST" action="">
-			<div class='adress'>
-			<h1 align=center> Исходный адрес:  </h1>
-			</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+       <link rel = "stylesheet" href = "{% static 'styles.css' %}"/ >
+        <title>Services of short Links </title>
+    </head>
+        <body>
+		<heder>
+			{% if user.is_authenticated %}
+				<h2>Добро пожаловать, {{ request.user }}</h2>	
+				<h1> <a href=logout/> выход </a></h1>			
+				{% endif %}
+		</heder>
+<div class='main'>
+	<form method="POST" action="">
+		<div class='adress'>
+			<h1> Исходный адрес:  </h1>
+		</div>
 			{{form}}	
-			<input type="Submit" value="Submit" id="submit"> 
-		</form>
+		<input type="Submit" value="Submit" id="submit"> 
+	</form>	
 		<div id="output">	
 			{% if key and link %}
-<h3> Ваша сокращенная ссылка: <a href={{ link }}> http://localhost:8000/{{ key }}</a></h3>
+				<h3> Ваша сокращенная ссылка: <a href={{ link }}> http://localhost:8000/{{ key }}</a></h3>
 			{% elif link %}
-<h3> Допускаются следующие схемы: http, https, ftp</h3>
-			{% endif %}
+				<h3> Допускаются следующие схемы: http, https, ftp</h3>
+				{% endif %}
 		</div>
-		
+			{% if not user.is_authenticated %}
+				<h3> Вы находитесь в режиме ограниченого функционала. Для использования всех функций, пожалуйста <a href=register/>зарегистрируйтесь </a>или <a href="accounts/login/">войдите в акаунт </a> </h3>
+			{% endif %}		
 </div>
-		</body>
-	</html>
+        </body>
+</html>
+
+
+
+
+		
+		
+
