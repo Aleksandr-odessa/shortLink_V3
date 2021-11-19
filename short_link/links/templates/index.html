@@ -13,13 +13,17 @@
 				{% endif %}
 		</heder>
 <div class='main'>
-	<form method="POST" action="">
+	
+		<form method="POST" action="">
 		<div class='adress'>
 			<h1> Исходный адрес:  </h1>
 		</div>
+<div class='form'>
 			{{form}}	
+		</div>	
 		<input type="Submit" value="Submit" id="submit"> 
-	</form>	
+		</form>
+
 		<div id="output">	
 			{% if key and link %}
 				<h3> Ваша сокращенная ссылка: <a href={{ link }}> http://localhost:8000/{{ key }}</a></h3>
